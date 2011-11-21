@@ -6,9 +6,7 @@ class Conversor
 
 	if($number<=3){
 		$romano = "";
-		for( $i=0; $i<$number; $i++)
-			$romano .="I";
-		return $romano;
+		return $this->repeatLetters("I",$number);
 		
 	}
     if($number == 4){
@@ -21,16 +19,18 @@ class Conversor
 
 	if( $number < 9 && $number >= 6){
 		$romano = "V";
-        var_export($romano);
-        var_export($number);
 		$diff = $number - 5;
-		for ($i=0; $i<$diff; $i++)
-     {
-      		$romano .="I"; 
-     }
+		$romano .= $this->repeatLetters("I", $diff);
 		return $romano;
  	}
 	
 }
+
+	public function repeatLetters($letter, $times)
+	{
+		
+		return str_repeat($letter, $times);
+	}
+
 }
 ?>

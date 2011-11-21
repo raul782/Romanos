@@ -68,6 +68,18 @@ class romanoTest extends \PHPUnit_Framework_TestCase
 			assertEquals($conversor->numberToRoman(8),"VIII");
        }
 
+	public function testRepeatLettersZeroTimes()
+	{
+		$conversor = new Conversor();
+		assertEquals($conversor->repeatLetters("I",0),"");
+	}
+	
+	public function testRepeatLettersManyTimes()
+	{
+		$conversor = new Conversor();
+		assertEquals($conversor->repeatLetters("I",3),"III");
+	}
+
 }
 
 ?>
