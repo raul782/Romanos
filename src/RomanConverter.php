@@ -7,20 +7,21 @@ use Romanos\RomanSymbol;
 
 class RomanConverter
 {
-  public function numberToRoman($number)
- {
-    $digits = $this->decomposeNumberInReverse($number);
-    $romanInReverse = array();
-    foreach($digits as $position => $digit)
+    public function numberToRoman($number)
     {
+      $digits = $this->decomposeNumberInReverse($number);
+      $romanInReverse = array();
+      foreach($digits as $position => $digit)
+      {
         $romanInReverse [] = $this->transformDigitToRoman($digit, $position);
-    }
-    return $this->transformIntoRomanWord($romanInReverse);
+      }
+    
+        return $this->transformIntoRomanWord($romanInReverse);
 		
-  }
+    }
 
-  public function transformDigitToRoman($digit, $position)
-  {
+    public function transformDigitToRoman($digit, $position)
+    {
        $romanSymbol = new RomanSymbol();
        $remaining = $digit % 5;
        $digitToRoman = ""; 
@@ -37,25 +38,26 @@ class RomanConverter
 	   elseif($remaining == 0 && $digit == 5){
         $digitToRoman = $romanSymbol->getRomanSymbol(5*pow(10,$position));
        }
+
        return $digitToRoman;
 
-   }
+    }
 	
-   public function decomposeNumberInReverse($number)
-   {
-         return array_reverse(str_split($number));
-   }
+    public function decomposeNumberInReverse($number)
+    {
+      return array_reverse(str_split($number));
+    }
 
-   public function repeatLetters($letter, $times)
-   {
+    public function repeatLetters($letter, $times)
+    {
 		
-		return str_repeat($letter, $times);
-   }
+      return str_repeat($letter, $times);
+    }
 
-   public function transformIntoRomanWord($romanInReverse)
-   {
-        return implode("",array_reverse($romanInReverse)); 
-   }
+    public function transformIntoRomanWord($romanInReverse)
+    {
+      return implode("",array_reverse($romanInReverse)); 
+    }
 
 }
 ?>
