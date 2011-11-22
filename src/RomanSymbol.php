@@ -14,15 +14,15 @@ class RomanSymbol
     );
 
 
-	public function getRomanSymbol($referenceNumber)
-	{
+    public function getRomanSymbol($referenceNumber)
+    {
         if(!in_array($referenceNumber, array_keys($this->symbols)) )
         {
             throw New Exception("Reference Number Invalid");
         }
 
        return  $this->symbols[$referenceNumber];
-	}
+    }
 	
 }
 ?>
