@@ -39,23 +39,23 @@ class RomanConverter
        }
        return $digitToRoman;
 
-    }
+   }
 	
-    public function decomposeNumberInReverse($number)
-    {
+   public function decomposeNumberInReverse($number)
+   {
          return array_reverse(str_split($number));
-    }
+   }
 
-	public function repeatLetters($letter, $times)
-	{
+   public function repeatLetters($letter, $times)
+   {
 		
 		return str_repeat($letter, $times);
-	}
+   }
 
-    public function transformIntoRomanWord($romanInReverse)
-    {
+   public function transformIntoRomanWord($romanInReverse)
+   {
         return implode("",array_reverse($romanInReverse)); 
-    }
+   }
 
 }
 ?>
