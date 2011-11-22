@@ -3,82 +3,104 @@
    require_once 'PHPUnit/Framework/Assert/Functions.php';
    require_once '../src/RomanConverter.php';
 
-class romanoTest extends \PHPUnit_Framework_TestCase
+use Romanos\RomanConverter;
+
+class RomanConverterTest extends \PHPUnit_Framework_TestCase
 {
+	public function setUp()
+	{
+		$this->romanConverter = new RomanConverter();
+	}
+
+	public function tearDown()
+	{
+		$this->romanConverter = null;
+	}
 
 	public function testTransformNumberUno()
        {
-	
-			$RomanConverter = new RomanConverter();
-			
-			assertEquals($RomanConverter->numberToRoman(1),"I");
+				
+			assertEquals($this->romanConverter->numberToRoman(1),"I");
        }
 
 
 	public function testTransformNumberDos()
        {
 			
-			$RomanConverter = new RomanConverter();
-			
-			assertEquals($RomanConverter->numberToRoman(2),"II");
+			assertEquals($this->romanConverter->numberToRoman(2),"II");
        }
 
 	public function testTransformNumberTres()
        {
 			
-			$RomanConverter = new RomanConverter();
-			
-			assertEquals($RomanConverter->numberToRoman(3),"III");
+			assertEquals($this->romanConverter->numberToRoman(3),"III");
        }
 
 	public function testTransformNumberCuatro()
        {
 			
-			$RomanConverter = new RomanConverter();
-			
-			assertEquals($RomanConverter->numberToRoman(4),"IV");
+			assertEquals($this->romanConverter->numberToRoman(4),"IV");
        }
 	
 	public function testTransformNumberCinco()
        {
 			
-			$RomanConverter = new RomanConverter();
-			
-			assertEquals($RomanConverter->numberToRoman(5),"V");
+			assertEquals($this->romanConverter->numberToRoman(5),"V");
        }
 	public function testTransformNumberSeis()
        {
 			
-			$RomanConverter = new RomanConverter();
-			
-			assertEquals($RomanConverter->numberToRoman(6),"VI");
+			assertEquals($this->romanConverter->numberToRoman(6),"VI");
        }
 	public function testTransformNumberSiete()
        {
 			
-			$RomanConverter = new RomanConverter();
-			
-			assertEquals($RomanConverter->numberToRoman(7),"VII");
+			assertEquals($this->romanConverter->numberToRoman(7),"VII");
        }
 	public function testTransformNumberOcho()
        {
 			
-			$RomanConverter = new RomanConverter();
-			
-			assertEquals($RomanConverter->numberToRoman(8),"VIII");
+			assertEquals($this->romanConverter->numberToRoman(8),"VIII");
        }
-
+    public function testTransformNumberTrece()
+    {
+        			assertEquals($this->romanConverter->numberToRoman(13),"XIII");
+    }
+    public function testTransformNumberCientoTrece()
+    {
+        			assertEquals($this->romanConverter->numberToRoman(113),"CXIII");
+                    print $this->romanConverter->numberToRoman(113);
+    }
+    public function testTransformNumberMilDosCientosCuarentayNueve()    
+    {
+        			assertEquals($this->romanConverter->numberToRoman(1249),"MCCXLIX");
+                    print $this->romanConverter->numberToRoman(1249);
+    }
 	public function testRepeatLettersZeroTimes()
 	{
-		$RomanConverter = new RomanConverter();
-		assertEquals($RomanConverter->repeatLetters("I",0),"");
+
+		assertEquals($this->romanConverter->repeatLetters("I",0),"");
 	}
 	
 	public function testRepeatLettersManyTimes()
 	{
-		$RomanConverter = new RomanConverter();
-		assertEquals($RomanConverter->repeatLetters("I",3),"III");
+
+		assertEquals($this->romanConverter->repeatLetters("I",3),"III");
 	}
+
+    public function testDecomposeNumberInReverse()
+    {
+        $digits = array(0,1);
+        assertEquals($digits, $this->romanConverter->decomposeNumberInReverse(10));
+        
+    }
+    
+    public function testTransformIntoWord()
+    {
+        $romanInReverse = array("C", "X");
+        assertEquals("XC", $this->romanConverter->transformIntoRomanWord($romanInReverse));
+    }
+
 
 }
 
